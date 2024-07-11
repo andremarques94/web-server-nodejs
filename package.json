@@ -1,0 +1,24 @@
+{
+  "name": "web-server-nodejs",
+  "version": "1.0.0",
+  "description": "My take on nodejs native API to create a web server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/andremarques94/web-server-nodejs.git"
+  },
+  "keywords": [
+    "nodejs",
+    "web-server",
+    "http"
+  ],
+  "author": "NOZK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andremarques94/web-server-nodejs/issues"
+  },
+  "homepage": "https://github.com/andremarques94/web-server-nodejs#readme"
+}
