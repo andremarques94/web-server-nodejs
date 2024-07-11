@@ -8,6 +8,11 @@ const STATIC_FILES = "public";
 const __filename = new URL(import.meta.url).pathname;
 const __dirname = dirname(__filename);
 
+const supportedExtensions = {
+  ".html": "text/html",
+  ".ico": "image/x-icon",
+};
+
 const getResources = await readdir(STATIC_FILES, {
   withFileTypes: true,
   recursive: true,
@@ -32,6 +37,11 @@ function getResource(resource) {
   };
 }
 
+function broadcastResource(statusCode, header, content, res) {
+  res.writeHead(statusCode, { "Content-Type": header });
+  res.end(content);
+}
+
 const server = createServer(async (req, res) => {
   const { url, method } = req;
   const { contentPath, statusCode, extension } = getResource(url);
@@ -43,15 +53,15 @@ const server = createServer(async (req, res) => {
     }
 
     const content = await readFile(contentPath);
-    if (extension === ".ico") {
-      res.writeHead(statusCode, { "Content-Type": "image/x-icon" });
-      res.end(content);
-    }
 
-    if (extension === ".html") {
-      res.writeHead(statusCode, { "Content-Type": "text/html" });
-      res.end(content);
-    }
+    supportedExtensions.hasOwnProperty(extension)
+      ? broadcastResource(
+          statusCode,
+          supportedExtensions[extension],
+          content,
+          res,
+        )
+      : broadcastResource(403, "text/plain", "Extension not supported", res);
   } catch (error) {
     res.writeHead(500, { "Content-Type": "text/plain" });
     res.end("Internal Server Error");
