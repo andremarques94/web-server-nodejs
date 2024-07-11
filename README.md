@@ -5,9 +5,8 @@ My take on a simple webServer that only allows GET requests. It is written in No
 ## How to use
 
 1. Clone the repository
-2. Run `npm install` to install the dependencies
-3. Run `node server.js` to start the server
-4. Open your browser and go to `http://localhost:3000/` to see the server in action
+2. Run `npm start` to start the server
+3. Open your browser and go to `http://localhost:3000/` to see the server in action
 
 ## Features
 

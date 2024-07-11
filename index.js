@@ -3,6 +3,7 @@ import { readFile, readdir } from "fs/promises";
 import { join, dirname, parse } from "path";
 
 const PORT = process.env.PORT || 3000;
+const HOSTNAME = process.env.HOSTNAME || "localhost";
 const STATIC_FILES = "public";
 
 const __filename = new URL(import.meta.url).pathname;
@@ -68,6 +69,6 @@ const server = createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+server.listen(PORT, HOSTNAME, () => {
+  console.log(`Server is running on port http://${HOSTNAME}:${PORT}`);
 });
