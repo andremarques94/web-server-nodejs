@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "My take on nodejs native API to create a web server",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --env-file=.env index.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/andremarques94/web-server-nodejs/issues"
   },
-  "homepage": "https://github.com/andremarques94/web-server-nodejs#readme"
+  "homepage": "https://github.com/andremarques94/web-server-nodejs#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
 }
